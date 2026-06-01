@@ -6,6 +6,9 @@
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
+    "create-draft-post": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/create-draft-post.ts",
+    "db:down": "docker stop payload-draft-post-poc-postgres",
+    "db:up": "docker start payload-draft-post-poc-postgres || docker run -d --name payload-draft-post-poc-postgres -p 5482:5432 -e POSTGRES_DB=payload_draft_post_poc -e POSTGRES_USER=payload -e POSTGRES_PASSWORD=payload -v payload-draft-post-poc_pgdata:/var/lib/postgresql/data postgres:16-alpine",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
@@ -18,6 +21,7 @@
     "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
   },
   "dependencies": {
+    "@payloadcms/db-postgres": "3.85.0",
     "@payloadcms/next": "3.85.0",
     "@payloadcms/richtext-lexical": "3.85.0",
     "@payloadcms/ui": "3.85.0",
@@ -28,8 +32,7 @@
     "payload": "3.85.0",
     "react": "19.2.6",
     "react-dom": "19.2.6",
-    "sharp": "0.34.2",
-    "@payloadcms/db-postgres": "3.85.0"
+    "sharp": "0.34.2"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

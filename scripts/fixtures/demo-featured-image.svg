@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">mimik draft post proof image</title>
+  <desc id="desc">A simple technology-themed image used for the Payload draft post proof of concept.</desc>
+  <rect width="1200" height="630" fill="#07111f"/>
+  <rect x="90" y="86" width="1020" height="458" rx="28" fill="#f7fbff"/>
+  <rect x="130" y="132" width="460" height="34" rx="17" fill="#18a0b8"/>
+  <rect x="130" y="204" width="780" height="24" rx="12" fill="#243b53"/>
+  <rect x="130" y="252" width="620" height="24" rx="12" fill="#627d98"/>
+  <rect x="130" y="342" width="260" height="76" rx="12" fill="#ed6a5a"/>
+  <rect x="430" y="342" width="260" height="76" rx="12" fill="#33c481"/>
+  <rect x="730" y="342" width="260" height="76" rx="12" fill="#f7b32b"/>
+  <circle cx="1012" cy="158" r="54" fill="#18a0b8"/>
+  <path d="M982 160h60M1012 130v60" stroke="#f7fbff" stroke-width="16" stroke-linecap="round"/>
+</svg>
