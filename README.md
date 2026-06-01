@@ -64,3 +64,32 @@ To repeat the production-like media check:
    - `S3_SECRET_ACCESS_KEY`
 4. Run `pnpm create-draft-post` with an image.
 5. Confirm the media file is stored in S3 while the post remains `_status: draft`.
+
+## AWS/RDS PostgreSQL Check
+
+To repeat the production-like database check:
+
+1. Create an Amazon RDS PostgreSQL instance.
+2. Keep it small for the PoC, for example `db.t4g.micro`.
+3. Make it publicly accessible only for the local test.
+4. Restrict the database security group to PostgreSQL `5432` from your current IP.
+5. Create the database if it was not created during RDS setup:
+
+```sql
+CREATE DATABASE payload_draft_post_poc;
+```
+
+6. Download the RDS CA bundle:
+
+```bash
+curl -o global-bundle.pem https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
+```
+
+7. Point `DATABASE_URL` at RDS:
+
+```bash
+DATABASE_URL=postgres://payload:REPLACE_WITH_PASSWORD@REPLACE_WITH_RDS_ENDPOINT:5432/payload_draft_post_poc?sslmode=verify-full&sslrootcert=./global-bundle.pem
+```
+
+8. Restart `pnpm dev`, then re-run `pnpm create-draft-post`.
+9. Confirm `posts` and `media` metadata are stored in RDS while the media file is stored in S3.
